@@ -6,11 +6,12 @@ import Modal from 'react-modal';
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
 
-function ModalApp() {
+function ModalApp(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
+    console.log(props.task);
     setIsOpen(true);
   }
 
@@ -34,7 +35,7 @@ function ModalApp() {
         contentLabel="Example Modal"
       >
         <div className='modalhead'>
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Task Name</h2>
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Task Name: {props.task.name}</h2>
         <button onClick={closeModal}>X</button>
         </div>
        

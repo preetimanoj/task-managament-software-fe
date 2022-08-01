@@ -2,10 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import UserList from './UserList';
 import "./style.css";
-import LoginPage from './Login';
+
 import SignUpPage from './Signup';
 
 import React, { Component, useEffect } from 'react';
+import AdminList from './AdminList';
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
 
   return (
     <div className="App">
-      <UserList />
+      {/* <UserList /> */}
+      <AdminList />
     </div>
   );
 }

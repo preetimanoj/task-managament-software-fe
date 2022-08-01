@@ -1,10 +1,12 @@
+
+
 import React, { Component } from 'react';
 import TaskList from './TaskList';
 import axios from 'axios';
 import LoginPage from './Login';
 
 
-class UserList extends Component {
+class AdminList extends Component {
     constructor(props) {
         super(props);
     }
@@ -25,7 +27,7 @@ class UserList extends Component {
       
         return (  
             <div>
-            <h1>Hello User</h1>
+            <h1>Hello ! Projects List</h1>
             {/* <LoginPage/> */}
            
             <ul>
@@ -44,6 +46,6 @@ class UserList extends Component {
     }
 }
  
-export default UserList;
+export default AdminList;
 
 
