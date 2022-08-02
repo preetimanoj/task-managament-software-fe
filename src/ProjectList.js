@@ -27,14 +27,14 @@ class ProjectList extends Component {
                 const persons = res.data;
                 this.setState({ persons });
             })
-            // .catch((reason) => {
-            //     if (reason.response.status === 400) {
-            //         // Handle 400
-            //     } else {
-            //         // Handle else
-            //     }
-            //     console.log(reason.message)
-            // })
+            .catch((reason) => {
+                if (reason.response.status === 400) {
+                    // Handle 400
+                } else {
+                    // Handle else
+                }
+                console.log(reason.message)
+            })
     }
 
     render() {
