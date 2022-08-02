@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import TaskList from './TaskList';
 import axios from 'axios';
 import LoginPage from './Login';
+import AddTaskModal from './AddTaskModal';
 
 
 class ProjectList extends Component {
@@ -27,8 +28,12 @@ class ProjectList extends Component {
       
         return (  
             <div>
-            <h1>Hello ! Projects Name</h1>
             {/* <LoginPage/> */}
+            <div className='adminSection'>
+                    <h1>Hello! Projects Name</h1>
+                    {/* <button className='adminAddBtn'>Add Project</button> */}
+                    <AddTaskModal />
+                </div>
            
             <ul>
             {

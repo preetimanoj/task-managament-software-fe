@@ -9,10 +9,9 @@ Modal.setAppElement('#root');
 function ModalApp(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [value, setValue] = React.useState('fruit');
+  const [value, setValue] = React.useState('');
 
   const options = [
-    { label: 'Started', value: 'Started' },
     { label: 'Pending', value: 'Pending' },
     { label: 'In Progress', value: 'Progress' },
     { label: 'Finished', value: 'Finished' },
@@ -54,21 +53,20 @@ function ModalApp(props) {
        
         <div className='modalcontent'>
             <p>
-            {props.task.description}
-                 .......
+                description .......
             </p>
             <div>
             <label>
               Status : 
-              <select className='dropdown' value={props.task.status} onChange={handleChange}>
+              <select className='dropdown' value={value} onChange={handleChange}>
                 {options.map((option) => (
                   <option value={option.value}>{option.label}</option>
                 ))}
               </select>
             </label>
-            <p>
-                hrs 
-            </p>
+            <label>Hours:
+              <input className='modalLabel2' type="number" id="hours" required/>
+            </label>
             </div>
 
         </div>
