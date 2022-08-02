@@ -51,7 +51,7 @@ class AdminList extends Component {
                                         <p>{project.name} </p>
                                         <button>
 
-                                            <Link to={`/projectList/${project.id}`} className='link'>View Project</Link>
+                                            <Link to={`/projectList/${project.id}`}>View Project</Link>
                                         </button>
 
                                     </div>
