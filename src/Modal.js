@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
+import axios from 'axios';
+
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
@@ -14,7 +16,6 @@ function ModalApp(props) {
   const options = [
 
     { label: 'Created', value: 'Created' },
-
     { label: 'Pending', value: 'Pending' },
     { label: 'In Progress', value: 'Progress' },
     { label: 'Finished', value: 'Finished' },
@@ -39,6 +40,45 @@ function ModalApp(props) {
     setIsOpen(false);
   }
 
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(event)
+    console.log(event.target.elements.proName.value)
+    console.log(event.target.elements.description.value)
+    console.log(event.target.elements.hours.value)
+    let abc = "12";
+        const options = {
+          method: 'POST',
+          url: 'http://localhost:3001/v1/task/updateTask/62df252ada9cfade2ebfc86b',
+          data: {
+            id: props.task.name,
+            name: props.task.name,
+            description: props.task.description,
+            startDate: props.task.startDate,
+            endDate:props.task.endDate,
+            status: event.target.elements.status.value,
+            hours: 3,
+            projectId: "62df2476da9cfade2ebfc869",
+          },
+      };
+
+      // send the request
+      axios(options)
+          .then(res => {
+              this.setState({ loginStatus: true });
+              console.log("Login Successful")
+          })
+          .catch((reason) => {
+              if (reason.response.status === 400) {
+                  // Handle 400
+              } else {
+                  // Handle else
+              }
+              console.log(reason.message)
+          })
+
+  }
+
   return (
     <div>
       <button onClick={openModal}>View Task</button>
@@ -59,17 +99,21 @@ function ModalApp(props) {
             {props.task.description}
             </p>
             <div>
-            <label>
-              Status : 
-              <select className='dropdown' value={props.task.status} onChange={handleChange}>
-                {options.map((option) => (
-                  <option value={option.value}>{option.label}</option>
-                ))}
-              </select>
-            </label>
-            <label>Hours:
-              <input className='modalLabel2' type="number" id="hours" required/>
-            </label>
+              <form onSubmit={handleSubmit}>
+                  <label>
+                  Status : 
+                  <select className='dropdown' value={props.task.status} id="status" onChange={handleChange}>
+                    {options.map((option) => (
+                      <option value={option.value}>{option.label}</option>
+                    ))}
+                  </select>
+                </label>
+                <label>Hours:
+                  <input className='modalLabel2' type="number" id="hours" required/>
+                </label>
+                <button type='submit'>submit</button>
+              </form>
+           
             </div>
 
         </div>
