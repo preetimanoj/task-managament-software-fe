@@ -1,79 +1,98 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-let navigate = useNavigate();
 
-function loginNow() {
-    const options = {
-        method: 'POST',
-        url: 'http://localhost:3001/v1/users/loginUser',
-        data: {
-            email: this.state.email,
-            password: this.state.password
-        },
+
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./loginstyles.css";
+
+export default function LoginPage() {
+    // React States
+    const [errorMessages, setErrorMessages] = useState({});
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [uname, setEmail] = useState("Email");
+    const [pass, setPassword] = useState("");
+
+    let navigate = useNavigate();
+
+    const errors = {
+        uname: "invalid username",
+        pass: "invalid password"
     };
 
-    // send the request
-    axios(options)
-        .then(res => {
-            this.setState({ loginStatus: true });
-            console.log("Login Successful")
 
-            if (res.data.role == "admin") {
-                navigate('/admin');
-            } else {
-                navigate('/user');
-            }
-        })
-        .catch((reason) => {
-            if (reason.response.status === 400) {
-                // Handle 400
-            } else {
-                // Handle else
-            }
-            console.log(reason.message)
-        })
-}
+    const handleSubmit = (event) => {
+        //Prevent page reload
+        event.preventDefault();
+        console.log("uname " + uname + " pass " + pass);
+        const options = {
+            method: 'POST',
+            url: 'http://localhost:3001/v1/users/loginUser',
+            data: {
+                email: uname,
+                password: pass
+            },
+        };
 
+        // send the request
+        axios(options)
+            .then(res => {
+                console.log("Login Successful")
+                console.log(res.data.role)
+                setIsSubmitted(true);
+                if (res.data.role == "admin") {
+                    navigate('/admin');
+                } else {
+                    navigate('/user');
+                }
+            })
+    };
 
-
-function LoginPage() {
-    const [loginStatus, setLoginStatus] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-
-    function handleEmailChange(param) {
-        this.setState({ email: param.target.value });
-        console.log(param.target.value)
+    // Generate JSX code for error message
+    const renderErrorMessage = (name) =>
+        name === errorMessages.name && (
+            <div className="error">{errorMessages.message}</div>
+        );
+    function emailChange(event) {
+        console.log(event.target.value);
+        setEmail(event.target.value);
     }
 
-    function handlePasswordChange(param) {
-        this.setState({ password: param.target.value });
+    function passChange(event) {
+        console.log(event.target.value);
+        setPassword(event.target.value);
     }
 
+
+    // JSX code for login form
+    const renderForm = (
+        <div className="form">
+            <form onSubmit={handleSubmit}>
+                <div className="input-container">
+                    <label>Username </label>
+                    <input type="text" name="uname" required onChange={emailChange} />
+                    {renderErrorMessage("uname")}
+                </div>
+                <div className="input-container">
+                    <label>Password </label>
+                    <input type="password" name="pass" required onChange={passChange} />
+                    {renderErrorMessage("pass")}
+                </div>
+                <div className="button-container">
+                    <input type="submit" />
+                </div>
+            </form>
+        </div>
+    );
 
     return (
-        <section className="loginSection" >
-            <form className="loginForm">
-                <fieldset className="fieldset">
-                    <legend>Login</legend>
-                    <ul>
-                        <li>
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" required onChange={handleEmailChange} />
-                        </li>
-                        <li>
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" required onChange={handlePasswordChange} />
-                        </li>
-                    </ul>
-                </fieldset>
-                <button onClick={loginNow()}>Login</button>
-                <button >Create Account</button>
-            </form>
-        </section>
+        <div className="app">
+            <div className="login-form">
+                <div className="title">Sign In</div>
+                {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+            </div>
+        </div>
     );
 }
 
-export default LoginPage;
+
