@@ -11,6 +11,7 @@ Modal.setAppElement('#root');
 function AddTaskModal(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [value, onChange] = React.useState(new Date());
 
   function openModal() {
     // console.log(props.task);
@@ -27,9 +28,49 @@ function AddTaskModal(props) {
     setIsOpen(false);
   }
 
-  function onSubmit(){
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(event)
+    console.log(event.target.elements.proName.value)
+    console.log(event.target.elements.description.value)
+    console.log(event.target.elements.hours.value)
+    let abc = "12";
+        const options = {
+          method: 'POST',
+          url: 'http://localhost:3001/v1/task/createTask',
+          data: {
+              id: parseInt(abc),
+              name: event.target.elements.proName.value,
+              description: event.target.elements.description.value,
+              startDate: event.target.elements.startDate.value,
+              endDate: event.target.elements.endDate.value,
+              status: "Created",
+              projectId: "62df2476da9cfade2ebfc869",
+              // password: this.state.password
+          },
+      };
+
+   
+
+
+      // send the request
+      axios(options)
+          .then(res => {
+              this.setState({ loginStatus: true });
+              console.log("Login Successful")
+          })
+          .catch((reason) => {
+              if (reason.response.status === 400) {
+                  // Handle 400
+              } else {
+                  // Handle else
+              }
+              console.log(reason.message)
+          })
 
   }
+
 
   return (
     <div>
@@ -46,7 +87,7 @@ function AddTaskModal(props) {
         <button onClick={closeModal}>X</button>
         </div>
        
-        <form className='modalcontent2'>
+        <form className='modalcontent2' onSubmit={handleSubmit}>
             <ul>
                 <li>
                     <label>
@@ -84,15 +125,9 @@ function AddTaskModal(props) {
                         <input className='modalLabel' type="text" id="endDate" required  placeholder='dd/mm/yyyy'/>
                     </label>
                 </li>
-                <li>
-                    <label>
-                        Member assigned:
-                        <input className='modalLabel' type="text" id="member" required/>
-                    </label>
-                </li>
                 
             </ul>
-
+            <button type='submit'>submit</button>
         </form>
        
       </Modal>
@@ -101,4 +136,3 @@ function AddTaskModal(props) {
 }
 
 export default AddTaskModal;
-
