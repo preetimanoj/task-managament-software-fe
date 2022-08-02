@@ -11,12 +11,6 @@ Modal.setAppElement('#root');
 function AddTaskModal(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [task, setTask] = React.useState('');
-  const [desc, setDesc] = React.useState('');
-  const [hours, setHours] = React.useState('');
-  const [status, setStatus] = React.useState('');
-  const [startDate, setstartDate] = React.useState('');
-  const [endDate, setendDate] = React.useState('');
 
   function openModal() {
     // console.log(props.task);
@@ -52,7 +46,7 @@ function AddTaskModal(props) {
         <button onClick={closeModal}>X</button>
         </div>
        
-        <form className='modalcontent2' onSubmit={onSubmit()}>
+        <form className='modalcontent2'>
             <ul>
                 <li>
                     <label>
@@ -98,7 +92,6 @@ function AddTaskModal(props) {
                 </li>
                 
             </ul>
-            <input type="submit" value="Add" />
 
         </form>
        
