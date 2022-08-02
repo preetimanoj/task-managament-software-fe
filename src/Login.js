@@ -59,7 +59,6 @@ export default function LoginPage() {
     }
 
     function passChange(event) {
-        console.log(event.target.value);
         setPassword(event.target.value);
     }
 
