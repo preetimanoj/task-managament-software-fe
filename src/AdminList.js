@@ -47,12 +47,11 @@ class AdminList extends Component {
             .map(project =>
                 <li key={project.id}>
                     <div className='task' >
-                    <p>{project.id}</p>
-                    <p>{project.name}</p>
-                    <p>hrs</p>
+                    {/* <p>{project.id}</p> */}
+                    <p>{project.name} </p>
                     <button>
                    
-                    <Link to={`/projectListr/${project.id}`}>Go to Tasks</Link>
+                    <Link to={`/projectList/${project.id}`}>View Project</Link>
                     </button>
                    
                 </div>
