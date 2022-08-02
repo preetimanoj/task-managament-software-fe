@@ -12,7 +12,7 @@ const TaskList = (props) => {
         <div className='task' >
         <p>{props.task.name}</p>
         <p>{props.task.status}</p>
-        <p>hrs</p>
+        <p>{props.task.hours}hrs</p>
         <ModalApp task={props.task}/>
     </div>
      );
