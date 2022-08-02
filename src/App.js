@@ -4,6 +4,7 @@ import UserList from './UserList';
 import "./style.css";
 
 import SignUpPage from './Signup';
+// import LoginPage from './Login';
 
 import React, { Component, useEffect } from 'react';
 import AdminList from './AdminList';
@@ -36,7 +37,7 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route path="/user" element={<UserList />} />
             <Route path="/admin" element={<AdminList />} />
-            <Route path="/projectList/:projId" element={<ProjectList />} />
+            <Route path="/projectListr/:projId" element={<ProjectList />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
+
+function Login() {
+    let navigate = useNavigate();
+    navigate('/user');
+    console.log("logged in");
+}
 class LoginPage extends Component {
     constructor(props) {
         super(props);

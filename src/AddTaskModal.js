@@ -6,14 +6,14 @@ import Modal from 'react-modal';
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
 
-function AddProjectModal(props) {
+function AddTaskModal(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
-
+  const [value, onChange] = React.useState(new Date());
 
   function openModal() {
-    console.log(props.task);
+    // console.log(props.task);
+    console.log("*****")
     setIsOpen(true);
   }
 
@@ -28,7 +28,7 @@ function AddProjectModal(props) {
 
   return (
     <div>
-      <button className='adminAddBtn' onClick={openModal}>Add New Project</button>
+      <button className='adminAddBtn' onClick={openModal}>Add Task</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -37,7 +37,7 @@ function AddProjectModal(props) {
         contentLabel="Example Modal"
       >
         <div className='modalhead'>
-        <h2>Add New Project</h2>
+        <h2>Add New Task</h2>
         <button onClick={closeModal}>X</button>
         </div>
        
@@ -45,13 +45,13 @@ function AddProjectModal(props) {
             <ul>
                 <li>
                     <label>
-                        Project Name: 
+                        Task Name: 
                         <input className='modalLabel' type="text" id="proName" required/>
                     </label>
                 </li>
                 <li>
                     <label>
-                        Description
+                        Description: 
                         <input className='modalLabel' type="text" id="description" required/>
                     </label>
                 </li>
@@ -61,6 +61,25 @@ function AddProjectModal(props) {
                         <input className='modalLabel' type="number" id="hours" required/>
                     </label>
                 </li>
+                <li>
+                    <label>
+                        Status: 
+                        <input className='modalLabel' type="text" id="status" value="Created" required/>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Start Date:
+                        <input className='modalLabel' type="text" id="startDate" required/>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        End Date:
+                        <input className='modalLabel' type="text" id="endDate" required/>
+                    </label>
+                </li>
+                
             </ul>
 
         </form>
@@ -70,5 +89,5 @@ function AddProjectModal(props) {
   );
 }
 
-export default AddProjectModal;
+export default AddTaskModal;
 

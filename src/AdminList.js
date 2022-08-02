@@ -52,7 +52,7 @@ class AdminList extends Component {
                     <p>hrs</p>
                     <button>
                    
-                    <Link to={`/projectList/${project.id}`}>Go to Tasks</Link>
+                    <Link to={`/projectListr/${project.id}`}>Go to Tasks</Link>
                     </button>
                    
                 </div>
