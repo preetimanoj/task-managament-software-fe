@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./loginstyles.css";
 
 export default function LoginPage() {
@@ -79,6 +79,11 @@ export default function LoginPage() {
                 </div>
                 <div className="button-container">
                     <input type="submit" />
+                </div>
+                <div className="button-container">
+                    <Link to="/register">
+                        <button>Register</button>
+                    </Link>
                 </div>
             </form>
         </div>
