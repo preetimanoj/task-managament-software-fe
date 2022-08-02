@@ -10,8 +10,8 @@ const TaskList = (props) => {
     } 
     return ( 
         <div className='task' >
-        <p>{props.name}</p>
-        <p>Status1</p>
+        <p>{props.task.name}</p>
+        <p>{props.task.status}</p>
         <p>hrs</p>
         <ModalApp task={props.task}/>
     </div>

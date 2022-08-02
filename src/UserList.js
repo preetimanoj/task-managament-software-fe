@@ -14,7 +14,7 @@ class UserList extends Component {
 
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/v1/project/getAllProjects`)
+    axios.get(`http://localhost:3001/v1/task/getAllTasks`)
     .then(res => {
         const persons = res.data.results;
         this.setState({ persons });

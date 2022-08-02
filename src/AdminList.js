@@ -12,15 +12,15 @@ class AdminList extends Component {
         super(props);
     }
     state = { 
-        persons: []
+        projects: []
      }
 
 
   componentDidMount() {
     axios.get(`http://localhost:3001/v1/project/getAllProjects`)
     .then(res => {
-        const persons = res.data.results;
-        this.setState({ persons });
+        const projects = res.data.results;
+        this.setState({ projects });
       })
   }
    
@@ -29,7 +29,7 @@ class AdminList extends Component {
         return (  
             <div>
                 <div className='adminSection'>
-                    <h1>Hello ! Projects List</h1>
+                    <h1>Hello Admin! Projects List</h1>
                     {/* <button className='adminAddBtn'>Add Project</button> */}
                     <AddProjectModal />
                 </div>
@@ -37,10 +37,17 @@ class AdminList extends Component {
            
             <ul>
             {
-          this.state.persons
-            .map(person =>
-                <li key={person.id}>
-                <TaskList name={person.name} task={person}/>
+          this.state.projects
+            .map(project =>
+                <li key={project.id}>
+                    <div className='task' >
+                    <p>{project.id}</p>
+                    <p>{project.name}</p>
+                    <p>hrs</p>
+                    <button>Go to Tasks</button>
+                   
+                </div>
+                {/* <TaskList name={project.name} task={project}/> */}
                 </li>
             )
         }

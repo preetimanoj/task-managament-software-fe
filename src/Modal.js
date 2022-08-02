@@ -12,6 +12,7 @@ function ModalApp(props) {
   const [value, setValue] = React.useState('fruit');
 
   const options = [
+    { label: 'Started', value: 'Started' },
     { label: 'Pending', value: 'Pending' },
     { label: 'In Progress', value: 'Progress' },
     { label: 'Finished', value: 'Finished' },
@@ -53,12 +54,13 @@ function ModalApp(props) {
        
         <div className='modalcontent'>
             <p>
-                description .......
+            {props.task.description}
+                 .......
             </p>
             <div>
             <label>
               Status : 
-              <select className='dropdown' value={value} onChange={handleChange}>
+              <select className='dropdown' value={props.task.status} onChange={handleChange}>
                 {options.map((option) => (
                   <option value={option.value}>{option.label}</option>
                 ))}

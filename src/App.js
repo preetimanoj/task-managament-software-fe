@@ -8,6 +8,13 @@ import SignUpPage from './Signup';
 import React, { Component, useEffect } from 'react';
 import AdminList from './AdminList';
 
+import {
+  BrowserRouter,
+  Routes, //replaces "Switch" used till v5
+  Route,
+} from "react-router-dom";
+import LoginPage from './Login';
+
 
 function App() {
 
@@ -21,8 +28,15 @@ function App() {
 
   return (
     <div className="App">
-      <UserList />
+      {/* <UserList /> */}
+      <BrowserRouter>
       {/* <AdminList /> */}
+      <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/user" element={<UserList />} />
+            <Route path="/admin" element={<AdminList />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
