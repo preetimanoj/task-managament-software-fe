@@ -8,7 +8,7 @@ import AddProjectModal from './AddProjectModal';
 
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-  
+
 
 
 
@@ -16,55 +16,55 @@ class AdminList extends Component {
     constructor(props) {
         super(props);
     }
-    state = { 
+    state = {
         projects: []
-     }
-    
+    }
 
-  componentDidMount() {
 
-    axios.get(`http://localhost:3001/v1/project/getAllProjects`)
-    .then(res => {
-        const projects = res.data.results;
-        this.setState({ projects });
-      })
-  }
-   
-    render() { 
-        
-        return (  
+    componentDidMount() {
+
+        axios.get(`http://localhost:3001/v1/project/getAllProjects`)
+            .then(res => {
+                const projects = res.data.results;
+                this.setState({ projects });
+            })
+    }
+
+    render() {
+
+        return (
             <div>
                 <div className='adminSection'>
                     <h1>Hello Admin! Projects List</h1>
                     {/* <button className='adminAddBtn'>Add Project</button> */}
                     <AddProjectModal />
                 </div>
-            {/* <LoginPage/> */}
-           
-            <ul>
-            {
-          this.state.projects
-            .map(project =>
-                <li key={project.id}>
-                    <div className='task' >
-                    {/* <p>{project.id}</p> */}
-                    <p>{project.name} </p>
-                    <button>
-                   
-                    <Link to={`/projectList/${project.id}`}>View Project</Link>
-                    </button>
-                   
-                </div>
-                </li>
-            )
-        }
-            </ul> 
+                {/* <LoginPage/> */}
+
+                <ul>
+                    {
+                        this.state.projects
+                            .map(project =>
+                                <li key={project.id}>
+                                    <div className='task' >
+                                        {/* <p>{project.id}</p> */}
+                                        <p>{project.name} </p>
+                                        <button>
+
+                                            <Link to={`/projectList/${project.id}`}>View Project</Link>
+                                        </button>
+
+                                    </div>
+                                </li>
+                            )
+                    }
+                </ul>
             </div>
-            
+
         );
     }
 }
- 
+
 export default AdminList;
 
 

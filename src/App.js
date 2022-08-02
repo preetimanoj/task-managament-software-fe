@@ -32,12 +32,13 @@ function App() {
     <div className="App">
       {/* <UserList /> */}
       <BrowserRouter>
-      {/* <AdminList /> */}
-      <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/user" element={<UserList />} />
-            <Route path="/admin" element={<AdminList />} />
-            <Route path="/projectList/:projId" element={<ProjectList />} />
+        {/* <AdminList /> */}
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<SignUpPage />} />
+          <Route path="/user" element={<UserList />} />
+          <Route path="/admin" element={<AdminList />} />
+          <Route path="/projectList/:projId" element={<ProjectList />} />
         </Routes>
       </BrowserRouter>
     </div>
