@@ -6,6 +6,11 @@ import axios from 'axios';
 import LoginPage from './Login';
 import AddProjectModal from './AddProjectModal';
 
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+  
+
+
 
 class AdminList extends Component {
     constructor(props) {
@@ -14,9 +19,10 @@ class AdminList extends Component {
     state = { 
         projects: []
      }
-
+    
 
   componentDidMount() {
+
     axios.get(`http://localhost:3001/v1/project/getAllProjects`)
     .then(res => {
         const projects = res.data.results;
@@ -25,7 +31,7 @@ class AdminList extends Component {
   }
    
     render() { 
-      
+        
         return (  
             <div>
                 <div className='adminSection'>
@@ -44,10 +50,12 @@ class AdminList extends Component {
                     <p>{project.id}</p>
                     <p>{project.name}</p>
                     <p>hrs</p>
-                    <button>Go to Tasks</button>
+                    <button>
+                   
+                    <Link to={`/projectList/${project.id}`}>Go to Tasks</Link>
+                    </button>
                    
                 </div>
-                {/* <TaskList name={project.name} task={project}/> */}
                 </li>
             )
         }

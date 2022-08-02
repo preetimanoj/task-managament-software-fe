@@ -14,6 +14,7 @@ import {
   Route,
 } from "react-router-dom";
 import LoginPage from './Login';
+import ProjectList from './ProjectList';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route path="/user" element={<UserList />} />
             <Route path="/admin" element={<AdminList />} />
+            <Route path="/projectList/:projId" element={<ProjectList />} />
         </Routes>
       </BrowserRouter>
     </div>
