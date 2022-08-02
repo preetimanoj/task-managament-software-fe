@@ -4,6 +4,7 @@ import UserList from './UserList';
 import "./style.css";
 
 import SignUpPage from './Signup';
+import LoginPage from './Login';
 
 import React, { Component, useEffect } from 'react';
 import AdminList from './AdminList';

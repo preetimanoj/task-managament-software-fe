@@ -56,19 +56,19 @@ function AddProjectModal(props) {
                 <li>
                     <label>
                         Project Name: 
-                        <input className='modalLabel' type="text" id="username" required/>
+                        <input className='modalLabel' type="text" id="proName" required/>
                     </label>
                 </li>
                 <li>
                     <label>
                         Description
-                        <input className='modalLabel' type="text" id="username" required/>
+                        <input className='modalLabel' type="text" id="description" required/>
                     </label>
                 </li>
                 <li>
                     <label>
                         Hours: 
-                        <input className='modalLabel' type="number" id="username" required/>
+                        <input className='modalLabel' type="number" id="hours" required/>
                     </label>
                 </li>
                 <li>
