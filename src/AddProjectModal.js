@@ -96,7 +96,7 @@ function AddProjectModal(props) {
                     </label>
                 </li>
             </ul>
-            <button type='submit'>submit</button>
+            <input type="submit" value="Add" />
         </form>
        
       </Modal>
