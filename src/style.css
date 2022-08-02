@@ -36,3 +36,12 @@
     grid-template-columns: 3fr 1fr;
     grid-column-gap: 10px;
 }
+.modalcontent2{
+    padding: 10px;
+}
+/* .modalInputs{
+    padding: 10px;
+} */
+.modalLabel{
+    margin-left: 10px;
+}

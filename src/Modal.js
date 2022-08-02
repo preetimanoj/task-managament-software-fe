@@ -9,6 +9,18 @@ Modal.setAppElement('#root');
 function ModalApp(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [value, setValue] = React.useState('fruit');
+
+  const options = [
+    { label: 'Pending', value: 'Pending' },
+    { label: 'In Progress', value: 'Progress' },
+    { label: 'Finished', value: 'Finished' },
+  ];
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
 
   function openModal() {
     console.log(props.task);
@@ -44,9 +56,14 @@ function ModalApp(props) {
                 description .......
             </p>
             <div>
-            <p>
-                status 
-            </p>
+            <label>
+              Status : 
+              <select className='dropdown' value={value} onChange={handleChange}>
+                {options.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </label>
             <p>
                 hrs 
             </p>

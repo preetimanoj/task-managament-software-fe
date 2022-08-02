@@ -21,8 +21,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <UserList /> */}
-      <AdminList />
+      <UserList />
+      {/* <AdminList /> */}
     </div>
   );
 }
