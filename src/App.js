@@ -36,7 +36,7 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route path="/user" element={<UserList />} />
             <Route path="/admin" element={<AdminList />} />
-            <Route path="/projectList/:projId" element={<ProjectList />} />
+            <Route path="/projectListr/:projId" element={<ProjectList />} />
         </Routes>
       </BrowserRouter>
     </div>

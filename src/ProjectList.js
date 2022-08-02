@@ -6,9 +6,13 @@ import axios from 'axios';
 import LoginPage from './Login';
 
 
+
+// get id from url and pass it to axios get
+
 class ProjectList extends Component {
     constructor(props) {
         super(props);
+        console.log(props)
     }
     state = { 
         persons: []
@@ -16,9 +20,14 @@ class ProjectList extends Component {
 
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/v1/task/getAllTasks `)
+    // let params = useParams();
+    // const projId = this.props.match.params.projId;
+
+    const projId = "62df2476da9cfade2ebfc869";
+    axios.get(`http://localhost:3001/v1/task/getAllTasksForProject/${projId}`)
     .then(res => {
-        const persons = res.data.results;
+        const persons = res.data;
+       
         this.setState({ persons });
       })
   }
@@ -27,7 +36,7 @@ class ProjectList extends Component {
       
         return (  
             <div>
-            <h1>Hello ! Projects Name</h1>
+            <h1>Tasks of Projects Name -- 2</h1>
             {/* <LoginPage/> */}
            
             <ul>

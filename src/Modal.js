@@ -12,7 +12,7 @@ function ModalApp(props) {
   const [value, setValue] = React.useState('fruit');
 
   const options = [
-    { label: 'Started', value: 'Started' },
+    { label: 'Created', value: 'Created' },
     { label: 'Pending', value: 'Pending' },
     { label: 'In Progress', value: 'Progress' },
     { label: 'Finished', value: 'Finished' },
