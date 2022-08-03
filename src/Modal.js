@@ -43,11 +43,10 @@ function ModalApp(props) {
   function handleSubmit(event) {
     event.preventDefault()
     console.log(event)
-    console.log(event.target.elements.proName.value)
-    console.log(event.target.elements.description.value)
-    console.log(event.target.elements.hours.value)
+ 
     let abc = "12";
-        const options = {
+   
+      const options = {
           method: 'POST',
           url: 'http://localhost:3001/v1/task/updateTask/62df252ada9cfade2ebfc86b',
           data: {
@@ -61,7 +60,7 @@ function ModalApp(props) {
             projectId: "62df2476da9cfade2ebfc869",
           },
       };
-
+      console.log("op",options.data)
       // send the request
       axios(options)
           .then(res => {

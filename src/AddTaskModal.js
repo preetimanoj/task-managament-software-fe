@@ -33,7 +33,7 @@ function AddTaskModal(props) {
     event.preventDefault()
     console.log(event)
     console.log(event.target.elements.proName.value)
-    console.log(event.target.elements.description.value)
+    console.log(event.target.elements.member.value)
     console.log(event.target.elements.hours.value)
     let abc = "12";
         const options = {
@@ -47,6 +47,8 @@ function AddTaskModal(props) {
               endDate: event.target.elements.endDate.value,
               status: "Created",
               projectId: "62df2476da9cfade2ebfc869",
+              hours:event.target.elements.hours.value,
+              member:event.target.elements.member.value
               // password: this.state.password
           },
       };
@@ -125,7 +127,18 @@ function AddTaskModal(props) {
                         <input className='modalLabel' type="text" id="endDate" required  placeholder='dd/mm/yyyy'/>
                     </label>
                 </li>
-                
+                <li>
+                    <label>
+                        Member Assigned:
+                        <input className='modalLabel' type="email" id="member" required/>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Hourly Rate:
+                        <input className='modalLabel' type="number" id="rate" required/>
+                    </label>
+                </li>
             </ul>
             <button type='submit'>submit</button>
         </form>
