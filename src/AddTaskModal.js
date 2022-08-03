@@ -11,10 +11,15 @@ Modal.setAppElement('#root');
 function AddTaskModal(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [value, onChange] = React.useState(new Date());
+  const [mail, setMail] = React.useState(new Date());
+
+  const handleChange = (event) => {
+    setMail(event.target.value);
+
+  };
 
   function openModal() {
-    // console.log(props.task);
+    console.log(props.users);
     console.log("*****")
     setIsOpen(true);
   }
@@ -33,7 +38,7 @@ function AddTaskModal(props) {
     event.preventDefault()
     console.log(event)
     console.log(event.target.elements.proName.value)
-    console.log(event.target.elements.member.value)
+    // console.log(event.target.elements.member.value)
     console.log(event.target.elements.hours.value)
     let abc = "12";
         const options = {
@@ -48,7 +53,7 @@ function AddTaskModal(props) {
               status: "Created",
               projectId: "62df2476da9cfade2ebfc869",
               hours:event.target.elements.hours.value,
-              member:event.target.elements.member.value
+              member:mail
               // password: this.state.password
           },
       };
@@ -130,7 +135,12 @@ function AddTaskModal(props) {
                 <li>
                     <label>
                         Member Assigned:
-                        <input className='modalLabel' type="email" id="member" required/>
+                        {/* <input className='modalLabel' type="email" id="member" required/> */}
+                        <select className='dropdown' value={mail} id="status" onChange={handleChange}>
+                            {props.users.map((option) => (
+                            <option value={option.email}>{option.email}</option>
+                            ))}
+                        </select>
                     </label>
                 </li>
                 <li>

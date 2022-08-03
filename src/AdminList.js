@@ -33,9 +33,12 @@ class AdminList extends Component {
 
             axios.get(`http://localhost:3001/v1/users/getAllUsers`)
             .then(res => {
-                const users = res.data.results;
+                const users = res.data;
                 this.setState({ users });
             })
+
+            console.log(this.state.projects, "project")
+            console.log("userzd", this.state.users)
     }
 
     render() {
@@ -52,7 +55,7 @@ class AdminList extends Component {
                 {/* <LoginPage/> */}
                 <div className='adminContent'>
                 <ul>
-                    {
+                    {this.state.projects?
                         this.state.projects
                             .map(project =>
                                 <li key={project.id}>
@@ -65,11 +68,11 @@ class AdminList extends Component {
 
                                     </div>
                                 </li>
-                            )
+                            ) : ""
                     }
                 </ul>
                 <ul>
-                    {
+                    {this.state.users?
                         this.state.users
                             .map(user =>
                                 <li key={user.id}>
@@ -82,7 +85,7 @@ class AdminList extends Component {
 
                                     </div>
                                 </li>
-                            )
+                            ) :""
                     }
                 </ul>
                 </div>

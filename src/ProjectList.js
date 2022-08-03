@@ -16,7 +16,8 @@ class ProjectList extends Component {
         console.log(props)
     }
     state = {
-        persons: []
+        persons: [],
+        users: []
     }
 
 
@@ -35,6 +36,11 @@ class ProjectList extends Component {
                 }
                 console.log(reason.message)
             })
+        axios.get(`http://localhost:3001/v1/users/getAllUsers`)
+        .then(res => {
+            const users = res.data;
+            this.setState({ users });
+        })
     }
 
     render() {
@@ -46,7 +52,7 @@ class ProjectList extends Component {
                 {/* <AddTaskModal /> } */}
                 <div className='adminSection'>
                     <h1>Hello! Projects Name</h1> 
-                    <AddTaskModal />
+                    <AddTaskModal users={this.state.users}/>
                 </div>
 
                 <ul>
