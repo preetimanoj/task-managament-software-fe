@@ -3,21 +3,21 @@ import ModalApp from './Modal';
 
 
 const TaskList = (props) => {
-    
-    function showTask () {
+
+    function showTask() {
         console.log("cliced"
         )
-    } 
-    return ( 
+    }
+    return (
         <div className='task' >
-        <p>{props.task.name}</p>
-        <p>{props.task.status}</p>
-        <p>{props.task.hours}hrs</p>
-        <ModalApp task={props.task}/>
-    </div>
-     );
+            <p>{props.task.name}</p>
+            <p>{props.task.status}</p>
+            <p>{props.task.hours}hrs</p>
+            <ModalApp task={props.task} />
+        </div>
+    );
 }
- 
+
 
 // class TaskList extends Component {
 //     constructor(props) {
@@ -25,7 +25,7 @@ const TaskList = (props) => {
 //     }
 //     state = {  }
 
-  
+
 
 //     render() { 
 //         return (  
@@ -37,5 +37,5 @@ const TaskList = (props) => {
 //         );
 //     }
 // }
- 
+
 export default TaskList;

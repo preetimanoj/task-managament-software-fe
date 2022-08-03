@@ -17,7 +17,8 @@ class ProjectList extends Component {
     }
     state = {
         persons: [],
-        users: []
+        users: [],
+        projectName: String,
     }
 
 
@@ -37,13 +38,34 @@ class ProjectList extends Component {
                 console.log(reason.message)
             })
         axios.get(`http://localhost:3001/v1/users/getAllUsers`)
-        .then(res => {
-            const users = res.data;
-            this.setState({ users });
-        })
+            .then(res => {
+                const users = res.data;
+                this.setState({ users });
+            })
+        axios.get(`http://localhost:3001/v1/project/getAllProjects`)
+            .then(res => {
+                const projects = res.data;
+                this.setState({ projectName: projects.results[0].name })
+                console.log(projects.results[0].name);
+            })
+
     }
 
     render() {
+
+        let status = "Completed"
+        let TotalHours = 0
+        let Completed = 0
+        let TotalCost = 0;
+
+
+        this.state.persons.forEach((item) => {
+            if (item.status != "Completed" && status != "In-Progress") {
+                status = "In-Progress"
+            }
+            if (!isNaN(item.hours))
+                TotalHours += item.hours
+        });
 
         return (
             <div>
@@ -51,8 +73,14 @@ class ProjectList extends Component {
                 {/* <LoginPage/> */}
                 {/* <AddTaskModal /> } */}
                 <div className='adminSection'>
-                    <h1>Hello! Projects Name</h1> 
-                    <AddTaskModal users={this.state.users}/>
+                    <h1>{this.state.projectName}</h1>
+                    <br />
+                    <h1>List of Tasks:</h1>
+                    <br />
+                    <b>Project Status: {status}</b>
+                    <br />
+                    <b>Total Prject Time: {TotalHours} hrs</b>
+                    <AddTaskModal users={this.state.users} />
                 </div>
 
                 <ul>
@@ -65,7 +93,7 @@ class ProjectList extends Component {
                             )
                     }
                 </ul>
-  {/* componentDidMount() {
+                {/* componentDidMount() {
     // let params = useParams();
     // const projId = this.props.match.params.projId;
 
@@ -84,10 +112,10 @@ class ProjectList extends Component {
             <div>
             <h1>Tasks of Projects Name -- 2</h1>
             {/* <LoginPage/> */}
-            {/* <div className='adminSection'>
+                {/* <div className='adminSection'>
                     <h1>Hello! Projects Name</h1> */}
-                    {/* <button className='adminAddBtn'>Add Project</button> */}
-                    {/* <AddTaskModal />
+                {/* <button className='adminAddBtn'>Add Project</button> */}
+                {/* <AddTaskModal />
                 </div>
            
             <ul>
