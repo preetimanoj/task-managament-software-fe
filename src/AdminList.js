@@ -8,6 +8,7 @@ import AddProjectModal from './AddProjectModal';
 
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import AddUserModal from './AddUserModal';
 
 
 
@@ -17,7 +18,8 @@ class AdminList extends Component {
         super(props);
     }
     state = {
-        projects: []
+        projects: [],
+        users: []
     }
 
 
@@ -27,6 +29,12 @@ class AdminList extends Component {
             .then(res => {
                 const projects = res.data.results;
                 this.setState({ projects });
+            });
+
+            axios.get(`http://localhost:3001/v1/users/getAllUsers`)
+            .then(res => {
+                const users = res.data.results;
+                this.setState({ users });
             })
     }
 
@@ -37,10 +45,12 @@ class AdminList extends Component {
                 <div className='adminSection'>
                     <h1>Hello Admin! Projects List</h1>
                     {/* <button className='adminAddBtn'>Add Project</button> */}
+                   
                     <AddProjectModal />
+                    <AddUserModal/>
                 </div>
                 {/* <LoginPage/> */}
-
+                <div className='adminContent'>
                 <ul>
                     {
                         this.state.projects
@@ -50,7 +60,6 @@ class AdminList extends Component {
                                         {/* <p>{project.id}</p> */}
                                         <p>{project.name} </p>
                                         <button>
-
                                             <Link to={`/projectList/${project.id}`}>View Project</Link>
                                         </button>
 
@@ -59,6 +68,25 @@ class AdminList extends Component {
                             )
                     }
                 </ul>
+                <ul>
+                    {
+                        this.state.users
+                            .map(user =>
+                                <li key={user.id}>
+                                    <div className='task' >
+                                        {/* <p>{project.id}</p> */}
+                                        <p>{user.name} </p>
+                                        
+                                        <p>{user.email} </p>
+                                        <p>{user.isEmailVerified? "Verified" : "Pending"} </p>
+
+                                    </div>
+                                </li>
+                            )
+                    }
+                </ul>
+                </div>
+                
             </div>
 
         );

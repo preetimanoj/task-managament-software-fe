@@ -111,12 +111,18 @@ input {
     /* padding-bottom: 2px; */
   }
 
- .modalcontent{
-
- }
-
+ 
  .popmodal{
 
   max-width: 200px;
 
+ }
+
+ .adminContent ul{
+  width: -webkit-fill-available;
+
+ }
+
+ .adminContent{
+  display: flex;
  }

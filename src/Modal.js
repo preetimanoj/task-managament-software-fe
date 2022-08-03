@@ -23,12 +23,14 @@ function ModalApp(props) {
 
   const handleChange = (event) => {
     setValue(event.target.value);
+
   };
 
 
   function openModal() {
     console.log(props.task);
     setIsOpen(true);
+    setValue(props.task.status);
   }
 
   function afterOpenModal() {
@@ -55,8 +57,9 @@ function ModalApp(props) {
             description: props.task.description,
             startDate: props.task.startDate,
             endDate:props.task.endDate,
-            status: event.target.elements.status.value,
-            hours: 3,
+            status: value,
+            hours: event.target.elements.hours.value,
+            // member: props.task.member,
             projectId: "62df2476da9cfade2ebfc869",
           },
       };
@@ -101,14 +104,14 @@ function ModalApp(props) {
               <form onSubmit={handleSubmit}>
                   <label>
                   Status : 
-                  <select className='dropdown' value={props.task.status} id="status" onChange={handleChange}>
+                  <select className='dropdown' value={value} id="status" onChange={handleChange}>
                     {options.map((option) => (
                       <option value={option.value}>{option.label}</option>
                     ))}
                   </select>
                 </label>
                 <label>Hours:
-                  <input className='modalLabel2' type="number" id="hours" required/>
+                  <input className='modalLabel2' type="number" id="hours" defaultValue={props.task.hours} required/>
                 </label>
                 <button type='submit'>submit</button>
               </form>
