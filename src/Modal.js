@@ -92,8 +92,8 @@ function ModalApp(props) {
         contentLabel="Example Modal"
       >
         <div className='modalhead'>
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Task Name: {props.task.name}</h2>
-        <button onClick={closeModal}>X</button>
+        <h2 >Task Name: {props.task.name}</h2>
+        <button onClick={closeModal} className="modalclose">X</button>
         </div>
        
         <div className='modalcontent'>

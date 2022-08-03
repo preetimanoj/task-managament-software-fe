@@ -46,14 +46,15 @@ function AddUserModal(props) {
               // password: this.state.password
           },
       };
-
-     
+      setIsOpen(false);
+      
 
       // send the request
       axios(options)
           .then(res => {
               this.setState({ loginStatus: true });
               console.log("Login Successful")
+              
           })
           .catch((reason) => {
               if (reason.response.status === 400) {
